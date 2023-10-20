@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 
 public class MtsTest extends BaseTest {
 
-    private final String url = "https://www.mts.by";
     private final String mainPageTitle = "МТС – мобильный оператор в Беларуси";
     private final By btnAcceptCookies = By.xpath("//button[@id='cookie-agree']");
     private final By btnContinue = By.xpath("//section[@class='pay']//button[@type='submit']");
@@ -43,8 +42,7 @@ public class MtsTest extends BaseTest {
     Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     @Test
-    public void payBlockTest() {
-        driver.get(url);
+    public void paymentOptionFieldsTest() {
         Assertions.assertEquals(mainPageTitle, driver.getTitle(), "The main page didn't open");
         driver.findElement(btnAcceptCookies).click();
 
@@ -72,11 +70,13 @@ public class MtsTest extends BaseTest {
         Assertions.assertEquals(expAccount2073, txbAccountNumberList.get(1));
         Assertions.assertEquals(expSumText, txbSumList.get(3));
         Assertions.assertEquals(expEmailText, txbEmailList.get(3));
+    }
 
+    @Test
+    public void servicePaymentInformationTest() {
         driver.findElement(txbPhoneNumber).sendKeys(phoneNumber);
         driver.findElement(txbSum).sendKeys(payAmount);
         driver.findElement(btnContinue).click();
-
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iFramePay));
         wait.until(ExpectedConditions.visibilityOfElementLocated(txbCardData));
 

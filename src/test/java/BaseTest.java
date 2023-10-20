@@ -7,12 +7,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public abstract class BaseTest {
 
     protected static WebDriver driver;
+    private final static String url = "https://www.mts.by";
 
     @BeforeAll
     public static void setUp(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.get(url);
     }
 
     @AfterAll
