@@ -1,0 +1,8 @@
+{
+  "deviceName": "Pixel 7 Pro",
+  "platformName": "Android",
+  "app": "/src/test/resources/app/calculator.apk",
+  "Remote Host": "127.0.0.1",
+  "Remote Port": "4723",
+  "Remote Path": "/wd/hub"
+}
