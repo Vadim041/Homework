@@ -2,6 +2,7 @@ package screens;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 
 public class MainScreen extends BaseForm {
@@ -26,7 +27,7 @@ public class MainScreen extends BaseForm {
     }
 
     public String performAddition(int... numbers) {
-        if (numbers.length < 2){
+        if (numbers.length < 2) {
             throw new IllegalArgumentException("Enter 2 or more numbers");
         }
         enterNumber(numbers[0]);
@@ -38,7 +39,7 @@ public class MainScreen extends BaseForm {
     }
 
     public String performSubtraction(int... numbers) {
-        if (numbers.length < 2){
+        if (numbers.length < 2) {
             throw new IllegalArgumentException("Enter 2 or more numbers");
         }
         enterNumber(numbers[0]);
@@ -50,7 +51,7 @@ public class MainScreen extends BaseForm {
     }
 
     public String performMultiplication(int... numbers) {
-        if (numbers.length < 2){
+        if (numbers.length < 2) {
             throw new IllegalArgumentException("Enter 2 or more numbers");
         }
         enterNumber(numbers[0]);
@@ -62,7 +63,7 @@ public class MainScreen extends BaseForm {
     }
 
     public String performDivision(int... numbers) {
-        if (numbers.length < 2){
+        if (numbers.length < 2) {
             throw new IllegalArgumentException("Enter 2 or more numbers");
         }
         enterNumber(numbers[0]);
@@ -72,7 +73,7 @@ public class MainScreen extends BaseForm {
         clickEqualsButton();
         return getResult();
     }
-
+    @Step("Entering the number {number}")
     public MainScreen enterNumber(int number) {
         String numberStr = String.valueOf(number);
         if (number < 0) {
@@ -86,31 +87,37 @@ public class MainScreen extends BaseForm {
         return this;
     }
 
+    @Step("Click on the divide button")
     public MainScreen clickDivideButton() {
         btnDivide.click();
         return this;
     }
 
+    @Step("Click on the multiply button")
     public MainScreen clickMultiplyButton() {
         btnMultiply.click();
         return this;
     }
 
+    @Step("Click on the minus button")
     public MainScreen clickMinusButton() {
         btnMinus.click();
         return this;
     }
 
+    @Step("Click on the plus button")
     public MainScreen clickPlusButton() {
         btnPlus.click();
         return this;
     }
 
+    @Step("Click on the equals button")
     public MainScreen clickEqualsButton() {
         btnEquals.click();
         return this;
     }
 
+    @Step("Click on the clear button")
     public MainScreen clickClearButton() {
         btnClear.click();
         return this;
